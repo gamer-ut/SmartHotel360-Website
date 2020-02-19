@@ -10,10 +10,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'adrack-sonar'
+    organization: 'adrack-test'
+    scannerMode: 'MSBuild'
+    projectKey: 'adrack-test'
+    projectName: 'adrack-test'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
