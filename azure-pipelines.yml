@@ -19,8 +19,8 @@ steps:
     projectKey: 'adrack-test'
     projectName: 'adrack-test'
 
+
 - task: WhiteSource Bolt@20
-  inputs:
 
 
 - task: DotNetCoreCLI@2
