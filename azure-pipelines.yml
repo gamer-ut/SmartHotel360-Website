@@ -20,7 +20,7 @@ steps:
 #     projectName: 'adrack-test'
 
 
-- task: WhiteSource Bolt@20
+
 
 
 
@@ -30,7 +30,7 @@ steps:
     command: 'build'
     projects: '**/*.sln'
 
-
+- task: WhiteSource Bolt@20
 
 
 # - task: SonarCloudAnalyze@1
