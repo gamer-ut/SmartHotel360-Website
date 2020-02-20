@@ -10,6 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'adrack-sonar'
@@ -18,15 +19,14 @@ steps:
     projectKey: 'adrack-test'
     projectName: 'adrack-test'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
+    command: 'build'
 
-- task: MSBuild@1
-  inputs:
-    solution: '**/*.sln'
+
+# - task: MSBuild@1
+#   inputs:
+#     solution: '**/*.sln'
 
 - task: SonarCloudAnalyze@1
 
