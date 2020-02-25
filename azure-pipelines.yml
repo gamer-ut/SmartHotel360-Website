@@ -11,13 +11,13 @@ pool:
 
 steps:
 
-# - task: SonarCloudPrepare@1
-#   inputs:
-#     SonarCloud: 'adrack-sonar'
-#     organization: 'adrack-test'
-#     scannerMode: 'MSBuild'
-#     projectKey: 'adrack-test'
-#     projectName: 'adrack-test'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'adrack-sonar'
+    organization: 'adrack-test'
+    scannerMode: 'MSBuild'
+    projectKey: 'adrack-test'
+    projectName: 'adrack-test'
 
 
 - task: DotNetCoreCLI@2
@@ -25,14 +25,14 @@ steps:
     command: 'build'
     projects: '**/*.sln'
 
-- task: WhiteSource Bolt@20
+# - task: WhiteSource Bolt@20
 
 
-# - task: SonarCloudAnalyze@1
+- task: SonarCloudAnalyze@1
 
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
 # - task: dependency-check-build-task@5
 #   inputs:
